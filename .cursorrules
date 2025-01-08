@@ -1,8 +1,88 @@
 You are an expert in game development specifically Godot using GDScript.
 
 Key Principles
-Write clean, maintainable, and efficient code.
-Use GDScript features to their fullest extent.
-Optimize performance and memory usage.
-Follow best practices for game development.
+- Write clean, maintainable, and efficient code.
+- Use GDScript features to their fullest extent.
+- Optimize performance and memory usage.
+- Follow best practices for game development.
 
+Project Setup
+- Directory Structure:
+    - Keep the project folder structured for clarity and reusability.
+    - /project
+        - /assets          # Art, sound, and other external assets
+  │    ├── /sprites
+  │    ├── /audio
+  │    └── /fonts
+  ├── /scenes          # Game scenes
+  ├── /scripts         # GDScript files
+  │    ├── /actors     # Player, NPCs, and enemies
+  │    ├── /ui         # User interface scripts
+  │    └── /systems    # Game systems like inventory or saving
+  ├── /resources       # Configurations and reusable resources
+  ├── /tilesets        # Tilesets and tilemaps
+  ├── /shaders         # Custom shaders
+  └── /addons   
+       # Third-party plugins or addons
+Naming Conventions:
+- Use clear, consistent naming for files, nodes, and scripts:
+- Scripts: Use PascalCase, e.g., Player.gd
+- Nodes: Use snake_case, e.g., player_sprite
+- Scenes: Prefix by type, e.g., UI_Menu.tscn, Level_01.tscn
+- Constants: Use ALL_CAPS, e.g., const MAX_HEALTH = 100
+
+Node Organization
+- Tree Hierarchy:
+    - Group related nodes logically. Avoid deep nesting (more than 4-5 levels).
+- One Scene, One Responsibility:
+    - Each scene should handle one responsibility, such as:
+        - Player.tscn: Handles player logic.
+        - Enemy.tscn: Handles enemy behavior.
+        - MainMenu.tscn: Handles the title screen UI.
+
+Coding Standards
+- General Guidelines:
+    - Stick to GDScript as the primary language (if your project doesn't demand C# or other languages).
+    - Keep functions short and focused (preferably under 20 lines).
+    - Use comments sparingly but effectively
+
+Script Structure:
+- Organize scripts by:
+    - Signals (at the top).
+    - Constants.
+    - Variables.
+    - Functions.
+
+Static Typing: 
+- Use explicit types to prevent bugs and improve editor hints.
+Singletons (Autoloads): 
+- Use singletons for shared systems like:
+    - Game state
+    - Audio manager
+    - Save system
+
+Game Workflow
+- Signals for Communication:
+    - Use signals to decouple nodes. Avoid calling methods on other nodes directly.
+    - Use custom resources for structured, reusable data:
+- Debug Tools:
+    - Use debug labels or breakpoints for testing.
+    - Toggle debug features with environment variables or a debug flag:
+
+Art and UI
+- 2D Pixel Art:
+    - Use CanvasItem scaling and rounding settings to prevent blurriness.
+    - Set Project Settings > Display > Window > Stretch to 2d for pixel-perfect scaling.
+- UI Standards:
+    - Use Containers for UI layouts:
+    - HBoxContainer, VBoxContainer, and GridContainer.
+    - Anchor UI nodes to appropriate corners or centers for responsive layouts.
+
+Performance
+- Optimize Physics:
+    - Use StaticBody2D for non-moving objects and Area2D for triggers.
+    - Keep collision shapes simple.
+- Load Scenes Dynamically:
+    - Use PackedScene and instance scenes at runtime for memory efficiency:
+- Use Groups:
+        - Organize nodes with groups for batch operations:
